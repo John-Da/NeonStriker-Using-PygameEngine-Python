@@ -1,5 +1,8 @@
 # Neon Striker
 
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Pygame](https://img.shields.io/badge/Pygame-Game%20Engine-green)
+
 **Neon Striker** is a fast‑paced arcade shooter built using **Python and Pygame**. The game focuses on reflex‑based gameplay, neon‑styled visuals, and score‑driven progression. Players control a Green Triangle and must survive waves of enemies while achieving the highest possible score. Enemies have different shapes (border): triangle, square, and ploygon with random color. Map is auto regenerated in each wave and game start.
 
 ---
