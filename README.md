@@ -39,7 +39,7 @@ The game is designed to run from a single Python file:
 
 ```
 Neon Striker/
-    neon_striker.py
+    neonstriker.py
 ```
 
 ## **Creat asset/sounds directory for all .mp3 and .wav files.**
@@ -51,7 +51,7 @@ Neon Striker/
 Navigate to the game directory and run:
 
 ```bash
-python neon_striker.py
+python neonstriker.py
 ```
 
 If integrated into a launcher, ensure the launcher executes the Python file using the system Python interpreter.
