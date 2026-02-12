@@ -1,6 +1,6 @@
 # Neon Striker
 
-## 1. Overview
+## Overview
 
 **Neon Striker** is a fast‑paced arcade shooter built using **Python and Pygame**. The game focuses on reflex‑based gameplay, neon‑styled visuals, and score‑driven progression. Players control a Green Triangle and must survive waves of enemies while achieving the highest possible score. Enemies have different shapes (border): triangle, square, and ploygon with random color. Map is auto regenerated in each wave and game start.
 
@@ -8,7 +8,7 @@
 
 https://github.com/user-attachments/assets/f2427d1b-ebd9-4314-9e95-ad2416e262fa
 
-## 2. Features
+## Features
 
 * Neon‑style arcade visual theme
 * Keyboard and controller support
@@ -18,7 +18,7 @@ https://github.com/user-attachments/assets/f2427d1b-ebd9-4314-9e95-ad2416e262fa
 
 ---
 
-## 3. System Requirements
+## System Requirements
 
 * Python 3.8 or later
 * Pygame library installed
@@ -32,7 +32,7 @@ pip install pygame
 
 ---
 
-## 4. File Structure
+## File Structure
 
 The game is designed to run from a single Python file:
 
@@ -45,7 +45,7 @@ Neon Striker/
 
 ---
 
-## 5. How to Run the Game
+## How to Run the Game
 
 Navigate to the game directory and run:
 
@@ -57,7 +57,7 @@ If integrated into a launcher, ensure the launcher executes the Python file usin
 
 ---
 
-## 6. Controls
+## Controls
 
 ### Keyboard
 
@@ -73,7 +73,7 @@ If integrated into a launcher, ensure the launcher executes the Python file usin
 
 ---
 
-## 7. Gameplay Mechanics
+## Gameplay Mechanics
 
 * Enemies spawn continuously with increasing speed and quantity.
 * Player earns points for destroying enemies.
