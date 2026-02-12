@@ -62,15 +62,17 @@ If integrated into a launcher, ensure the launcher executes the Python file usin
 
 ### Keyboard
 
-* **Arrow Keys / WASD** – Move player
-* **Space** – Shoot
+* **WASD** – Move player
+* **Mouse** - Turn around
+* **Left Click** – Shoot
 * **Esc** – Pause / Exit to launcher
 
 ### Controller (Nintendo Switch Pro Controller)
 
-* **Left Stick / D‑Pad** – Move player
-* **A / B** – Shoot
+* **Left Stick** – Move player
+* **Right Stick** – Turn around (Auto shoot)
 * **Plus / Start** – Pause menu
+* **A/X - Confirm/Select
 
 ---
 
