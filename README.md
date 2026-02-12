@@ -87,9 +87,7 @@ If integrated into a launcher, ensure the launcher executes the Python file usin
 
 ## Future Improvements
 
-* Sound effects and background music
-* Power‑ups and special weapons
 * Boss battles
-* Online leaderboard support
+* Smooth Endings/Transitions
 
 ---
