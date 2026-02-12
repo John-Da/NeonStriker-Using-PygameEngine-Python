@@ -66,6 +66,7 @@ If integrated into a launcher, ensure the launcher executes the Python file usin
 * **Mouse** - Turn around
 * **Left Click** – Shoot
 * **Esc** – Pause menu
+* **Return/Enter** - Confirm/Select
 
 ### Controller (Nintendo Switch Pro Controller)
 
