@@ -1,4 +1,4 @@
-# Neon Striker – Game Documentation
+# Neon Striker
 
 ## 1. Overview
 
