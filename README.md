@@ -81,8 +81,7 @@ If integrated into a launcher, ensure the launcher executes the Python file usin
 
 * Enemies spawn continuously with increasing speed and quantity.
 * Player earns points for destroying enemies.
-* Collision with enemies or projectiles reduces player life.
-* The game ends when all lives are lost.
+* Collision with enemies reduces player life.
 
 ---
 
