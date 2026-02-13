@@ -494,7 +494,8 @@ class Game:
         self.walls.empty()
         for _ in range(random.randint(10, 16)):
             w = Wall(random.randint(100, self.WIDTH - 100), random.randint(HEADER_HEIGHT + 100, self.HEIGHT - 100))
-            if not w.rect.colliderect(self.player.rect.inflate(300, 300)): self.walls.add(w)
+            if not w.rect.colliderect(self.player.rect.inflate(300, 300)):
+                self.walls.add(w)
 
     def spawn_enemy(self):
         for _ in range(5):
@@ -510,26 +511,67 @@ class Player(pygame.sprite.Sprite):
         self.orig = pygame.Surface((40, 60), pygame.SRCALPHA)
         pygame.draw.polygon(self.orig, GREEN, [(20, 0), (40, 60), (0, 60)])
         self.image, self.rect = self.orig, self.orig.get_rect(center=(x, y))
-        self.pos, self.hp, self.flash, self.current_angle = pygame.Vector2(self.rect.center), 100, 0, 0
+        self.pos = pygame.Vector2(self.rect.center)
+        self.hp = 100
+        self.flash = 0
+        self.current_angle = 0
+        self.shield_anim = 0
 
     def update(self, move, walls, w, h, angle, shielded):
         if move.length() > 0:
             target = self.pos + move.normalize() * 7
-            old_rect = self.rect.copy()
-            self.rect.center = target
-            if pygame.sprite.spritecollideany(self, walls) or not (20 < self.rect.centerx < w - 20) or not (
-                    HEADER_HEIGHT + 30 < self.rect.centery < h - 30):
-                self.rect = old_rect
-            else:
-                self.pos = pygame.Vector2(self.rect.center)
+
+            test_rect = pygame.Rect(0, 0, 40, 60)
+            test_rect.center = target
+
+            blocked = False
+            for wall in walls:
+                if test_rect.colliderect(wall.rect):
+                    blocked = True
+                    break
+
+            if not (20 < test_rect.centerx < w - 20):
+                blocked = True
+            if not (HEADER_HEIGHT + 30 < test_rect.centery < h - 30):
+                blocked = True
+
+            if not blocked:
+                self.pos = pygame.Vector2(target)
+
         self.current_angle = angle
-        self.image = pygame.transform.rotate(self.orig, self.current_angle)
+        player_img = pygame.transform.rotate(self.orig, self.current_angle)
+
         if shielded:
-            s_surf = self.image.copy()
-            pygame.draw.circle(s_surf, CYAN, (s_surf.get_width() // 2, s_surf.get_height() // 2), 25, 2)
-            self.image = s_surf
+            self.shield_anim += 0.15
+
+            base_radius = 48
+            pulse = (math.sin(self.shield_anim) + 1) * 4
+            shield_radius = base_radius + pulse
+
+            alpha = 70 + (math.sin(self.shield_anim * 2) + 1) * 40
+            alpha = int(max(40, min(140, alpha)))
+
+            size = int(shield_radius * 2 + 20)
+            shield_surf = pygame.Surface((size, size), pygame.SRCALPHA)
+            center = size // 2
+
+            pygame.draw.circle(shield_surf, (0, 255, 255, int(alpha * 0.25)), (center, center), int(shield_radius + 6))
+            pygame.draw.circle(shield_surf, (0, 255, 255, alpha), (center, center), int(shield_radius), 4)
+            pygame.draw.circle(shield_surf, (0, 255, 255, int(alpha * 0.35)), (center, center), int(shield_radius - 6), 2)
+
+            player_rect = player_img.get_rect(center=(center, center))
+            shield_surf.blit(player_img, player_rect)
+
+            self.image = shield_surf
+        else:
+            self.image = player_img
+
         self.rect = self.image.get_rect(center=self.pos)
-        if self.flash > 0: self.flash -= 1; self.image.fill(WHITE, special_flags=pygame.BLEND_RGB_ADD)
+
+        # 5. DAMAGE FLASH
+        if self.flash > 0:
+            self.flash -= 1
+            self.image.fill((255, 255, 255), special_flags=pygame.BLEND_RGB_ADD)
 
 
 class Enemy(pygame.sprite.Sprite):
